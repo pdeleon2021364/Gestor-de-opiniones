@@ -124,16 +124,12 @@ export const updatePublication = async (req, res) => {
     }
 };
 
-// Eliminar publicación (soft delete)
+// Eliminar publicacion
 export const deletePublication = async (req, res) => {
     try {
         const { id } = req.params;
 
-        const publication = await Publication.findByIdAndUpdate(
-            id,
-            { isActive: false },
-            { new: true }
-        );
+        const publication = await Publication.findByIdAndDelete(id);
 
         if (!publication) {
             return res.status(404).json({
@@ -144,8 +140,7 @@ export const deletePublication = async (req, res) => {
 
         res.status(200).json({
             success: true,
-            message: 'Publicación eliminada correctamente',
-            data: publication,
+            message: 'Publicación eliminada permanentemente',
         });
 
     } catch (error) {

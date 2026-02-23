@@ -3,11 +3,11 @@
 import mongoose from "mongoose";
 
 const commentSchema = mongoose.Schema(
-    {
-        post: {
+        {
+            post: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Post',
-            required: [true, 'La publicación es requerida']
+            ref: 'Publication',   
+             required: [true, 'La publicación es requerida']
         },
         content: {
             type: String,

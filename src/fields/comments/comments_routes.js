@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { changeCommentStatus, createComment, getCommentById, getComments, updateComment } from './comments_controller.js';  
+import { changeCommentStatus, deleteComment , createComment, getCommentById, getComments, updateComment } from './comments_controller.js';  
 
 const router = Router();
 
@@ -22,5 +22,8 @@ router.put(
 
 router.put('/:id/activate', changeCommentStatus);
 router.put('/:id/deactivate', changeCommentStatus);
+
+// DELETE correcto
+router.delete('/:id', deleteComment);
 
 export default router;

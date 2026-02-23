@@ -64,6 +64,33 @@ export const getComments = async (req, res) => {
     }
 }
 
+export const deleteComment = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const comment = await Comment.findByIdAndDelete(id);
+
+        if (!comment) {
+            return res.status(404).json({
+                success: false,
+                message: 'Comentario no encontrado',
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            message: 'Comentario eliminado',
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: 'Error al eliminar comentario',
+            error: error.message,
+        });
+    }
+};
+
 // Obtener comentario por ID
 export const getCommentById = async (req, res) => {
     try {
