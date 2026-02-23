@@ -23,6 +23,7 @@ const middlewares = (app) => {
 
 const routes = (app) => {
     app.use(`${BASE_PATH}/comments`, commentRoutes);
+    app.use("/gestiondeopiniones/v1/auth", authRoutes);
     app.use(`${BASE_PATH}/publications`, publicationRoutes);
 
     app.get(`${BASE_PATH}/Health`, (request, response) => {
